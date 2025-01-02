@@ -1,8 +1,14 @@
 const Button = ({ color = "blue", text, children }) => {
-  console.log(color);
+  const onClickButton = () => {
+    console.log(text);
+  };
 
   return (
-    <button style={{ color: color }}>
+    <button
+      onClick={onClickButton}
+      onMouseEnter={onClickButton}
+      style={{ color: color }}
+    >
       {text} - {color.toUpperCase()}
       {children}
     </button>
