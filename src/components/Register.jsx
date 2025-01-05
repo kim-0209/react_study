@@ -4,48 +4,61 @@
 // 3. 국적
 // 4. 자기소개
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Register = () => {
-  const [name, setName] = useState("이름");
-  const [birth, setBirth] = useState("");
-  const [country, setCountry] = useState("");
-  const [bio, setBio] = useState("");
+  const [input, setInput] = useState({
+    name: "",
+    birth: "",
+    country: "",
+    bio: "",
+  });
 
-  const onChangename = (e) => {
-    setName(e.target.value);
+  const inputRef = useRef();
+  const onChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
   };
-
-  const onChangeBirth = (e) => {
-    setBirth(e.target.value);
+  const onSubmit = () => {
+    if (!input.name) {
+      console.log("인풋 네임 안적혔어");
+      inputRef.current.focus();
+    }
   };
-  const onChangeCountry = (e) => {
-    setCountry(e.target.value);
-  };
-  const onChangeBio = (e) => {
-    setBio(e.target.value);
-  };
-
   return (
     <div>
       <div>
-        <input value={name} onChange={onChangename} placeholder={"이름"} />
+        <input
+          ref={inputRef}
+          name="name"
+          value={input.name}
+          onChange={onChange}
+          placeholder={"이름"}
+        />
       </div>
       <div>
-        <input value={birth} type="date" onChange={onChangeBirth} />
+        <input
+          name="birth"
+          value={input.birth}
+          type="date"
+          onChange={onChange}
+        />
       </div>
       <div>
-        <select value={country} onChange={onChangeCountry}>
+        <select name="country" value={input.country} onChange={onChange}>
           <option value=""></option>
           <option value="kr">한국</option>
           <option value="us">미국</option>
           <option value="uk">영국</option>
         </select>
-        {country}
       </div>
       <div>
-        <textarea value={bio} onChange={onChangeBio}></textarea>
-        {bio}
+        <textarea name="bio" value={input.bio} onChange={onChange}></textarea>
+      </div>
+      <div>
+        <button onClick={onSubmit}>제출</button>
       </div>
     </div>
   );
