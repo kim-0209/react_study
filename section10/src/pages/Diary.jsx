@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import Viewer from "../components/Viewer";
+import Viewer from "../components/Viewer1";
 import useDiary from "../hooks/useDiary";
 import { getStringedDate } from "../util/get-stringed-date";
 

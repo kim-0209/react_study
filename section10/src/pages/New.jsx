@@ -8,11 +8,6 @@ const New = () => {
   const nav = useNavigate();
   const { onCreate } = useContext(DiaryDispatchContext);
 
-  useEffect(() => {
-    const $title = document.getElementsByClassName("title")[0];
-    $title.innerHTML = "새 일기 쓰기";
-  }, []);
-
   const onSubmit = (input) => {
     onCreate(input.createDate.getTime(), input.emotionId, input.content);
     nav("/", { replace: true });
