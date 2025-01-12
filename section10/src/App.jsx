@@ -10,19 +10,19 @@ import Notfound from "./pages/NotFound";
 const mockData = [
   {
     id: 1,
-    createdDate: new Date("2025-01-09").getTime(),
+    createDate: new Date("2025-01-09").getTime(),
     emotionId: 1,
     content: "1번 일기 내용",
   },
   {
     id: 2,
-    createdDate: new Date("2025-01-08").getTime(),
+    createDate: new Date("2025-01-08").getTime(),
     emotionId: 2,
     content: "2번 일기 내용",
   },
   {
     id: 3,
-    createdDate: new Date("2024-12-08").getTime(),
+    createDate: new Date("2024-12-08").getTime(),
     emotionId: 3,
     content: "3번 일기 내용",
   },
@@ -50,12 +50,12 @@ function App() {
   const [data, dispatch] = useReducer(reducer, mockData);
   const idRef = useRef(3);
   // 새로운 일기 추가
-  const onCreate = (createdDate, emotionId, content) => {
+  const onCreate = (createDate, emotionId, content) => {
     dispatch({
       type: "CREATE",
       data: {
         id: idRef.current++,
-        createdDate,
+        createDate,
         emotionId,
         content,
       },
@@ -63,12 +63,12 @@ function App() {
   };
 
   // 기존 일기 수정
-  const onUpdate = (id, createdDate, emotionId, content) => {
+  const onUpdate = (id, createDate, emotionId, content) => {
     dispatch({
       type: "UPDATE",
       data: {
         id,
-        createdDate,
+        createDate,
         emotionId,
         content,
       },
